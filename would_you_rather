@@ -16,7 +16,11 @@ if ARGV.size == 1 and ARGV[0] == "manage"
       menu.prompt = ""
 
       scenarios_controller = ScenariosController.new
-      menu.choice('Add a scenario') { say("What scenario would you like to add?") }
+      menu.choice('Add a scenario') do
+        user_input = ask("What scenario would you like to add?")
+        response = scenarios_controller.add(user_input)
+        say("\"#{user_input}\" has been added\n") unless response.nil?
+      end
       menu.choice('List all scenarios') do
         say(scenarios_controller.index)
         exit
