@@ -15,6 +15,22 @@ describe ScenariosController do
   describe ".add" do
     let(:controller) {ScenariosController.new}
 
+    it "should add a scenario" do
+      controller.add("run with scissors")
+      assert_equal 1, Scenario.count
+    end
+
+    it "should not add scenario all spaces" do
+      scenario_name = "       "
+      assert_raises(ArgumentError) { controller.add(scenario_name) }
+    end
+
+    it "should only add scenarios that make sense" do
+      scenario_name = "77777777"
+      controller.add(scenario_name)
+      assert_equal 0, Scenario.count
+    end
+
   end
 
 end

@@ -13,4 +13,12 @@ class ScenariosController
       "No scenarios found. Add a scenario.\n"
     end
   end
+
+  def add(name)
+    name_cleaned = name.strip
+    unless /^\d+$/.match(name_cleaned)
+      Scenario.create(name_cleaned)
+      name_cleaned
+    end
+  end
 end
