@@ -30,17 +30,17 @@ I want to add many scenarios
 
 Usage Example:
 
-  > ./would_you_rather manage
-  1. Add a scenario
-  2. List all scenarios
-  3. Exit
-  > 1
-  What scenario would you like to add?
-  > butcher a cow
-  "butcher a cow" has been added
-  1. Add a scenario
-  2. List all scenarios
-  3. Exit
+    > ./would_you_rather manage
+    1. Add a scenario
+    2. List all scenarios
+    3. Exit
+    > 1
+    What scenario would you like to add?
+    > butcher a cow
+    "butcher a cow" has been added
+    1. Add a scenario
+    2. List all scenarios
+    3. Exit
 
 Acceptance Criteria:
 
@@ -61,14 +61,14 @@ I want to view all the existing scenarios
 
 Usage Example:
 
-  > ./would_you_rather manage
-  1. Add a scenario
-  2. List all scenarios
-  3. Exit
-  > 2
-  1. eat a snake
-  2. eat a steak
-  3. butcher a cow
+    > ./would_you_rather manage
+    1. Add a scenario
+    2. List all scenarios
+    3. Exit
+    > 2
+    1. eat a snake
+    2. eat a steak
+    3. butcher a cow
 
 Acceptance Criteria:
 
@@ -82,25 +82,25 @@ I want to delete an existing scenario
 
 Usage Example:
 
-  > ./would_you_rather manage
-  1. Add a scenario
-  2. List all scenarios
-  3. Exit
-  > 2
-  1. eat a snake
-  2. eat a steak
-  3. butcher a cow
-  > 3
-  butcher a cow
-  Would you like to?
-  1. Edit
-  2. Delete
-  3. Exit
-  > 2
-  "butcher a cow" has been deleted
-  1. Add a scenario
-  2. List all scenarios
-  3. Exit
+    > ./would_you_rather manage
+    1. Add a scenario
+    2. List all scenarios
+    3. Exit
+    > 2
+    1. eat a snake
+    2. eat a steak
+    3. butcher a cow
+    > 3
+    butcher a cow
+    Would you like to?
+    1. Edit
+    2. Delete
+    3. Exit
+    > 2
+    "butcher a cow" has been deleted
+    1. Add a scenario
+    2. List all scenarios
+    3. Exit
 
 Acceptance Criteria:
 
