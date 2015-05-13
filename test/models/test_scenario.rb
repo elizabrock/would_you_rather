@@ -43,4 +43,17 @@ describe Scenario do
       end
     end
   end
+
+  describe "#create" do
+    describe "if we need to add scenarios" do
+      it "should add a scenario" do
+        Scenario.create("run with scissors")
+        assert_equal 1, Scenario.count
+      end
+
+      it "should reject empty strings" do
+       assert_raises(ArgumentError) { Scenario.create("")}
+      end
+    end
+  end
 end

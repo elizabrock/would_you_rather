@@ -12,4 +12,12 @@ class Scenario
   def self.count
     Database.execute("select count(id) from scenarios")[0][0]
   end
+
+  def self.create(name)
+    if name.empty?
+      raise ArgumentError.new
+    else
+      Database.execute("INSERT INTO scenarios (name) VALUES (?)", name)
+    end
+  end
 end
