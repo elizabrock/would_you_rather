@@ -11,13 +11,21 @@ menu_prompt = <<EOS
 EOS
 
 if ARGV.size == 1 and ARGV[0] == "manage"
-  choose do |menu|
-    menu.prompt = ""
+  loop do
+    choose do |menu|
+      menu.prompt = ""
 
-    scenarios_controller = ScenariosController.new
-    menu.choice('Add a scenario') { say("") }
-    menu.choice('List all scenarios') { scenarios_controller.index }
-    menu.choice('Exit') { say("Peace Out!\n") }
+      scenarios_controller = ScenariosController.new
+      menu.choice('Add a scenario') { say("What scenario would you like to add?") }
+      menu.choice('List all scenarios') do
+        say(scenarios_controller.index)
+        exit
+      end
+      menu.choice('Exit') do
+        say("Peace Out!\n")
+        exit
+      end
+    end
   end
 else
   puts "[Help] Run as: ./would_you_rather manage"

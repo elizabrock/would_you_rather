@@ -1,12 +1,16 @@
+require "highline/import"
+
 class ScenariosController
   def index
     if Scenario.count > 0
       scenarios = Scenario.all # All of the scenarios in an array
+      scenarios_string = ""
       scenarios.each_with_index do |scenario, index|
-        say("#{index + 1}. #{scenario.name}") #=> 1. Eat a pencil
+        scenarios_string << "#{index + 1}. #{scenario.name}\n" #=> 1. Eat a pencil
       end
+      scenarios_string
     else
-      say("No scenarios found. Add a scenario.\n")
+      "No scenarios found. Add a scenario.\n"
     end
   end
 end
