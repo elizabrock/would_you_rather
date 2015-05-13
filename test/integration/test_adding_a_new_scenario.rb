@@ -25,4 +25,23 @@ require_relative '../test_helper'
 #   * After the addition, the user is taken back to the main manage menu
 
 class AddingANewScenarioTest < Minitest::Test
+  def test_adding_a_scenario
+    shell_output = ""
+    expected_output = main_menu
+    test_scenario = "run with scissors"
+    IO.popen('./would_you_rather manage', 'r+') do |pipe|
+      pipe.puts "1"
+      expected_output << "What scenario would you like to add?\n"
+      pipe.puts test_scenario
+      expected_output << "\"#{test_scenario}\" has been added\n"
+      expected_output << main_menu
+      pipe.puts "3"
+      expected_output << "Peace Out!\n"
+      shell_output = pipe.read
+      pipe.close_write
+      pipe.close_read
+    end
+    assert_equal expected_output, shell_output
+
+  end
 end
