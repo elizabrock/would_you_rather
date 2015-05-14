@@ -14,6 +14,7 @@ class Scenario
   end
 
   def self.create(name)
+    return if /^\d+$/.match(name)
     if name.empty?
       raise ArgumentError.new
     else

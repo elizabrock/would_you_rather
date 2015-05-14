@@ -16,9 +16,7 @@ class ScenariosController
 
   def add(name)
     name_cleaned = name.strip
-    unless /^\d+$/.match(name_cleaned)
-      Scenario.create(name_cleaned)
-      name_cleaned
-    end
+    Scenario.create(name_cleaned)
+    "\"#{name}\" has been added\n"
   end
 end
