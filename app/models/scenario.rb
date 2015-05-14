@@ -1,5 +1,10 @@
 class Scenario
+  attr_reader :id
   attr_accessor :name
+
+  def initialize(name = nil)
+    self.name = name
+  end
 
   def self.all
     Database.execute("select name from scenarios order by name ASC").map do |row|
@@ -13,12 +18,8 @@ class Scenario
     Database.execute("select count(id) from scenarios")[0][0]
   end
 
-  def self.create(name)
-    return if /^\d+$/.match(name)
-    if name.empty?
-      raise ArgumentError.new
-    else
-      Database.execute("INSERT INTO scenarios (name) VALUES (?)", name)
-    end
+  def save
+    Database.execute("INSERT INTO scenarios (name) VALUES (?)", name)
+    @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
   end
 end

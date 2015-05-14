@@ -16,7 +16,11 @@ class ScenariosController
 
   def add(name)
     name_cleaned = name.strip
-    Scenario.create(name_cleaned)
-    "\"#{name}\" has been added\n"
+    scenario = Scenario.new(name_cleaned)
+    if scenario.save
+      "\"#{name}\" has been added\n"
+    else
+      scenario.errors
+    end
   end
 end

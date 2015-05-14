@@ -44,15 +44,46 @@ describe Scenario do
     end
   end
 
-  describe "#create" do
-    describe "if we need to add scenarios" do
-      it "should add a scenario" do
-        Scenario.create("run with scissors")
-        assert_equal 1, Scenario.count
-      end
+  describe ".initialize" do
+    it "sets the name attribute" do
+      scenario = Scenario.new("foo")
+      assert_equal "foo", scenario.name
+    end
+  end
 
-      it "should reject empty strings" do
-       assert_raises(ArgumentError) { Scenario.create("")}
+  describe ".save" do
+    describe "if the model is valid" do
+      let(:scenario){ Scenario.new("roast a pig") }
+      it "should return true" do
+        assert scenario.save
+      end
+      it "should save the model to the database" do
+        scenario.save
+        assert_equal 1, Scenario.count
+        last_row = Database.execute("SELECT * FROM scenarios")[0]
+        database_name = last_row['name']
+        assert_equal "roast a pig", database_name
+      end
+      it "should populate the model with id from the database" do
+        scenario.save
+        last_row = Database.execute("SELECT * FROM scenarios")[0]
+        database_id = last_row['id']
+        assert_equal database_id, scenario.id
+      end
+    end
+
+    describe "if the model is invalid" do
+      let(:scenario){ Scenario.new("") }
+      it "should return false" do
+        refute scenario.save
+      end
+      it "should not save the model to the database" do
+        scenario.save
+        assert_equal 0, Scenario.count
+      end
+      it "should populate the error messages" do # I have some qualms.
+        scenario.save
+        assert_equal "\"\" is not a valid scenario name.", scenario.errors
       end
     end
   end
