@@ -87,4 +87,62 @@ describe Scenario do
       end
     end
   end
+
+  describe ".valid?" do
+    describe "with valid data" do
+      let(:scenario){ Scenario.new("eat corn on the cob") }
+      it "returns true" do
+        assert scenario.valid?
+      end
+      it "should set errors to nil" do
+        scenario.valid?
+        assert scenario.errors.nil?
+      end
+    end
+    describe "with no name" do
+      let(:scenario){ Scenario.new(nil) }
+      it "returns false" do
+        refute scenario.valid?
+      end
+      it "sets the error message" do
+        scenario.valid?
+        assert_equal "\"\" is not a valid scenario name.", scenario.errors
+      end
+    end
+    describe "with empty name" do
+      let(:scenario){ Scenario.new("") }
+      it "returns false" do
+        refute scenario.valid?
+      end
+      it "sets the error message" do
+        scenario.valid?
+        assert_equal "\"\" is not a valid scenario name.", scenario.errors
+      end
+    end
+    describe "with a name with no letter characters" do
+      let(:scenario){ Scenario.new("777") }
+      it "returns false" do
+        refute scenario.valid?
+      end
+      it "sets the error message" do
+        scenario.valid?
+        assert_equal "\"777\" is not a valid scenario name.", scenario.errors
+      end
+    end
+    describe "with a previously invalid name" do
+      let(:scenario){ Scenario.new("666") }
+      before do
+        refute scenario.valid?
+        scenario.name = "Eat a pop tart"
+        assert_equal "Eat a pop tart", scenario.name
+      end
+      it "should return true" do
+        assert scenario.valid?
+      end
+      it "should not have an error message" do
+        scenario.valid?
+        assert_nil scenario.errors
+      end
+    end
+  end
 end
