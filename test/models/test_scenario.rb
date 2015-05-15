@@ -144,7 +144,7 @@ describe Scenario do
         assert_nil scenario.errors
       end
     end
-    describe ".update" do
+    describe "update" do
       describe "edit previously entered scenario" do
         let(:scenario_name){ "Eat a pop tart" }
         let(:new_scenario_name){ "Eat a toaster strudel" }
@@ -152,9 +152,10 @@ describe Scenario do
           scenario = Scenario.new(scenario_name)
           scenario.save
           assert_equal 1, Scenario.count
-          scenario.update(scenario_name, new_scenario_name)
-          last_row = Database.execute("SELECT * FROM scenarios WHERE name LIKE ?", scenario_name)[0]
+          scenario.name = new_scenario_name
+          scenario.save
           assert_equal 1, Scenario.count
+          last_row = Database.execute("SELECT * FROM scenarios WHERE name LIKE ?", scenario_name)[0]
           assert_equal new_scenario_name, last_row['name']
         end
       end

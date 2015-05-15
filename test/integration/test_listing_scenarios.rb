@@ -9,8 +9,12 @@ class TestListingScenarios < Minitest::Test
       expected_output << main_menu
       pipe.puts "2"
       expected_output << "No scenarios found. Add a scenario.\n"
-      pipe.close_write
+      expected_output << main_menu
+      pipe.puts "Exit"
+      expected_output << "Peace Out!\n"
       shell_output = pipe.read
+      pipe.close_write
+      pipe.close_read
     end
     assert_equal expected_output, shell_output
   end
@@ -25,6 +29,7 @@ class TestListingScenarios < Minitest::Test
       pipe.puts "2" # List all scenarios
       expected_output << "1. Eat tiger meat\n"
       expected_output << "2. Swallow a pencil\n"
+      expected_output << "3. Exit\n"
       pipe.close_write
       shell_output = pipe.read
     end
