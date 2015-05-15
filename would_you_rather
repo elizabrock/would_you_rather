@@ -27,6 +27,8 @@ if ARGV.size == 1 and ARGV[0] == "manage"
         end
       end
       menu.choice('List all scenarios') do
+        # Let's consider how acting on an scenario changes UX
+        # I.E. The program will no longer just exit
         say(scenarios_controller.index)
         exit
       end
