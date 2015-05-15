@@ -60,14 +60,14 @@ Usage Example:
     2. List all scenarios
     3. Exit
     > 2
-    Chooose a scenario to edit
     1. eat a snake
     2. eat a steak
     3. butcher a cow
     > 2
     Would you like to?
     1. Edit
-    2. Exit
+    2. Delete
+    3. Exit
     > 1
     Enter a new name:
     > Eat a pop tart
