@@ -46,7 +46,7 @@ class EditingAScenarioTest < Minitest::Test
       pipe.puts "1"
       expected_output << actions_menu
       pipe.puts "3"
-      expected_out << main_menu
+      expected_output << main_menu
       shell_output = pipe.read
       pipe.close_write
       pipe.close_read
@@ -55,11 +55,11 @@ class EditingAScenarioTest < Minitest::Test
   end
 
   def test_happy_path_editing_a_scenario
-    skip
+    skip("WIP")
   end
 
   def test_sad_path_editing_a_scenario
-    skip
+    skip("WIP")
   end
 
 end
