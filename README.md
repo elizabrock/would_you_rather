@@ -18,10 +18,47 @@ Users will be able to add/edit/delete scenarios, as well as take a quiz to make 
 In order to learn hard truths about my life priorities
 I want to see what my priorities, as reflected by my quiz answer
 
+(Given the quiz below)
+
+    > ./would_you_rather results
+
+    You would rather...
+
+    * Eat a pop tart than Eat a toaster strudel
+    * Drink Pepsi than Eat a toaster strudel
+    * Drink Pepsi than Drink Diet Pepsi
+
+    Now you know yourself!
+
+
 ### Taking the quiz
 
 In order to learn hard truths about my life priorities
 I want to take the quiz
+
+Assuming there the following scenarios:
+
+  * Eat a pop tart
+  * Eat a toaster strudel
+  * Drink Pepsi
+  * Drink Diet Pepsi
+
+    > ./would_you_rather
+    Would you rather...
+    1. Eat a pop tart
+    2. Eat a toaster strudel
+    > 1
+    Would you rather...
+    1. Eat a toaster strudel
+    2. Drink Pepsi
+    > 2
+    Would you rather...
+    1. Drink Pepsi
+    2. Drink Diet Pepsi
+    > 1
+    That's it.  Now I know you!
+
+The results would then be printed out.
 
 ### Adding a new scenario
 
@@ -108,7 +145,7 @@ Acceptance Criteria:
   * Each scenario is given a number, which does not correspond to its database id
 
 ### Deleting a scenario
- 
+
 In order to remove duplicates and/or scenarios that aren't illuminating
 I want to delete an existing scenario
 
