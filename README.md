@@ -54,6 +54,38 @@ Acceptance Criteria:
 In order to fix typos and/or clarify meaning
 I want to edit an existing scenario
 
+Usage Example:
+    > ./would_you_rather manage
+    1. Add a scenario
+    2. List all scenarios
+    3. Exit
+    > 2
+    Chooose a scenario to edit
+    1. eat a snake
+    2. eat a steak
+    3. butcher a cow
+    > 2
+    Would you like to?
+    1. Edit
+    2. Exit
+    > 1
+    Enter a new name:
+    > Eat a pop tart
+    "eat a steak" was renamed to "Eat a pop tart"
+    1. Add a scenario
+    2. List all scenarios
+    3. Exit
+    > 3
+    Peace Out!
+
+Acceptance Criteria:
+
+    * User should be able select proper scenario using a scenario's number.
+    * After selecting a scenario User should be presented with a sub-menu containing possible actions.
+    * Once the user enters a new name, show confirmation of the renaming
+    * On rename, if the user input an invalid, then ask the user to enter a valid name.
+    * After confirmation of scenario renaming, show main menu.
+
 ### Viewing all existing scenarios
 
 In order to evaluate and/or manage the existing scenarios
