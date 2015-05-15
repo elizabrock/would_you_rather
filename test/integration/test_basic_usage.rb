@@ -1,16 +1,6 @@
 require_relative '../test_helper'
 
 class TestBasicUsage < Minitest::Test
-  def test_minimum_arguments_required
-    shell_output = ""
-    expected_output = ""
-    IO.popen('./would_you_rather') do |pipe|
-      expected_output = "[Help] Run as: ./would_you_rather manage\n"
-      shell_output = pipe.read
-    end
-    assert_equal expected_output, shell_output
-  end
-
   def test_manage_wrong_argument_given
     shell_output = ""
     expected_output = ""

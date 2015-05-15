@@ -13,6 +13,7 @@ class Minitest::Test
   def setup
     Database.load_structure
     Database.execute("DELETE FROM scenarios;")
+    Database.execute("DELETE FROM choices;")
   end
 end
 
