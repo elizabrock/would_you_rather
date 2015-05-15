@@ -22,7 +22,8 @@ describe ScenariosController do
 
     it "should not add scenario all spaces" do
       scenario_name = "       "
-      assert_raises(ArgumentError) { controller.add(scenario_name) }
+      result = controller.add(scenario_name)
+      assert_equal "\"\" is not a valid scenario name.", result
     end
 
     it "should only add scenarios that make sense" do

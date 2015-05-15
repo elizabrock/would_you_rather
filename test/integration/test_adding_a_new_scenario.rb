@@ -45,7 +45,6 @@ class AddingANewScenarioTest < Minitest::Test
   end
 
   def test_sad_path_adding_a_scenario
-    skip
     shell_output = ""
     happy_scenario = "running with a knife"
     expected_output = main_menu
@@ -59,7 +58,7 @@ class AddingANewScenarioTest < Minitest::Test
       expected_output << "\"#{happy_scenario}\" has been added\n"
       expected_output << main_menu
       pipe.puts "2"
-      expected_output << "1. #{happy_scenario}"
+      expected_output << "1. #{happy_scenario}\n"
       shell_output = pipe.read
       pipe.close_write
       pipe.close_read
