@@ -37,6 +37,8 @@ class AddingANewScenarioTest < Minitest::Test
       expected_output << main_menu
       pipe.puts "2"
       expected_output << "1. #{test_scenario}\n"
+      expected_output << "2. Exit\n"
+      expected_output << exit_from(pipe)
       shell_output = pipe.read
       pipe.close_write
       pipe.close_read
@@ -59,6 +61,8 @@ class AddingANewScenarioTest < Minitest::Test
       expected_output << main_menu
       pipe.puts "2"
       expected_output << "1. #{happy_scenario}\n"
+      expected_output << "2. Exit\n"
+      expected_output << exit_from(pipe)
       shell_output = pipe.read
       pipe.close_write
       pipe.close_read

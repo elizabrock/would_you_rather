@@ -41,8 +41,13 @@ class Scenario
 
   def save
     return false unless valid?
-    Database.execute("INSERT INTO scenarios (name) VALUES (?)", name)
-    @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
+    if @id.nil?
+      Database.execute("INSERT INTO scenarios (name) VALUES (?)", name)
+      @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
+    else
+      Database.execute("UPDATE scenarios SET name=? WHERE id=?", name, id)
+      true
+    end
   end
 
   private

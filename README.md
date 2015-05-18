@@ -108,7 +108,7 @@ Usage Example:
     > 1
     Enter a new name:
     > Eat a pop tart
-    "eat a steak" was renamed to "Eat a pop tart"
+    Scenario has been updated to: "Eat a pop tart"
     1. Add a scenario
     2. List all scenarios
     3. Exit

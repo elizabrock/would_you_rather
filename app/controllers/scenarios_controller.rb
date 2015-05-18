@@ -4,23 +4,53 @@ class ScenariosController
   def index
     if Scenario.count > 0
       scenarios = Scenario.all # All of the scenarios in an array
-      scenarios_string = ""
-      scenarios.each_with_index do |scenario, index|
-        scenarios_string << "#{index + 1}. #{scenario.name}\n" #=> 1. Eat a pencil
+      choose do |menu|
+        menu.prompt = ""
+        scenarios.each do |scenario|
+          menu.choice(scenario.name){ action_menu(scenario) }
+        end
+        menu.choice("Exit")
       end
-      scenarios_string
     else
-      "No scenarios found. Add a scenario.\n"
+      say("No scenarios found. Add a scenario.\n")
+    end
+  end
+
+  def action_menu(scenario)
+    say("Would you like to?")
+    choose do |menu|
+      menu.prompt = ""
+      menu.choice("Edit") do
+        edit(scenario)
+      end
+      menu.choice("Delete") do
+        destroy(scenario)
+      end
+      menu.choice("Exit") do
+        exit
+      end
     end
   end
 
   def add(name)
-    name_cleaned = name.strip
-    scenario = Scenario.new(name_cleaned)
+    scenario = Scenario.new(name.strip)
     if scenario.save
       "\"#{name}\" has been added\n"
     else
       scenario.errors
+    end
+  end
+
+  def edit(scenario)
+    loop do
+      user_input = ask("Enter a new name:")
+      scenario.name = user_input.strip
+      if scenario.save
+        say("Scenario has been updated to: \"#{scenario.name}\"")
+        return
+      else
+        say(scenario.errors)
+      end
     end
   end
 end

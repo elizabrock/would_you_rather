@@ -21,6 +21,12 @@ def create_scenario(name)
   Database.execute("INSERT INTO scenarios (name) VALUES (?)", name)
 end
 
+def exit_from(pipe)
+  pipe.puts "Exit"
+  pipe.puts "3"
+  main_menu + "Peace Out!\n"
+end
+
 def main_menu
   "1. Add a scenario\n2. List all scenarios\n3. Exit\n"
 end
