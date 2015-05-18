@@ -30,6 +30,7 @@ class TestListingScenarios < Minitest::Test
       expected_output << "1. Eat tiger meat\n"
       expected_output << "2. Swallow a pencil\n"
       expected_output << "3. Exit\n"
+      expected_output << exit_from(pipe)
       pipe.close_write
       shell_output = pipe.read
     end
