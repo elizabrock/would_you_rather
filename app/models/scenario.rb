@@ -29,6 +29,15 @@ class Scenario
     end
   end
 
+  def self.find_by_name(name)
+    row = Database.execute("select * from scenarios where name LIKE ?", name).first
+    if row.nil?
+      nil
+    else
+      populate_from_database(row)
+    end
+  end
+
   def valid?
     if name.nil? or name.empty? or /^\d+$/.match(name)
       @errors = "\"#{name}\" is not a valid scenario name."

@@ -232,4 +232,25 @@ describe Scenario do
       end
     end
   end
+  describe "#find_by_name" do
+    describe "find when there's nothing in database" do
+
+      before(:all) do
+        scenario = Scenario.new("eat a pop tart")
+        scenario.save
+      end
+
+      it "should exist" do
+        assert_respond_to Scenario, :find_by_name
+      end
+      it "should return empty array" do
+        results = Scenario.find_by_name("go fishing")
+        assert_equal nil, results
+      end
+      it "should find only one item by a given name" do
+        results = Scenario.find_by_name("eat a pop tart")
+        assert_equal "eat a pop tart", results.name
+      end
+    end
+  end
 end
