@@ -22,10 +22,13 @@ task :import do
   require_relative 'app/models/scenario'
   Database.load_structure
   CSV.open('fixture.csv', 'r+').each do |row|
-    results = Scenario.find_by_name(row[0])
-    if results.nil?
-      scenario = Scenario.new(row[0])
-      scenario.save
+    cleaned_row = row[0].lstrip
+    unless cleaned_row[0] == '#'
+      results = Scenario.find_by_name(cleaned_row)
+      if results.nil?
+        scenario = Scenario.new(cleaned_row)
+        scenario.save
+      end
     end
   end
 end
