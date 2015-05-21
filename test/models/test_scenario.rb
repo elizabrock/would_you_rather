@@ -37,7 +37,7 @@ describe Scenario do
       end
       it "sets the error message" do
         scenario.valid?
-        assert_equal ["Name can't be blank"], scenario.errors.full_messages
+        assert_equal ["Name can't be blank."], scenario.errors.full_messages
       end
     end
     describe "with empty name" do
@@ -47,7 +47,7 @@ describe Scenario do
       end
       it "sets the error message" do
         scenario.valid?
-        assert_equal ["Name can't be blank"], scenario.errors.full_messages
+        assert_equal ["Name can't be blank."], scenario.errors.full_messages
       end
     end
     describe "with a name with no letter characters" do
@@ -57,7 +57,7 @@ describe Scenario do
       end
       it "sets the error message" do
         scenario.valid?
-        assert_equal ["Name must contain at least 1 letter"], scenario.errors.full_messages
+        assert_equal ["Name must contain at least 1 letter."], scenario.errors.full_messages
       end
     end
     describe "with a previously invalid name" do

@@ -54,7 +54,7 @@ class AddingANewScenarioTest < Minitest::Test
       pipe.puts "1"
       expected_output << "What scenario would you like to add?\n"
       pipe.puts ""
-      expected_output << "\"\" is not a valid scenario name.\n"
+      expected_output << "Name can't be blank.\n"
       expected_output << "What scenario would you like to add?\n"
       pipe.puts happy_scenario
       expected_output << "\"#{happy_scenario}\" has been added\n"
