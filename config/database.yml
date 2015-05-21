@@ -1,0 +1,11 @@
+production:
+  adapter: sqlite3
+  database: db/would_you_rather_production.sqlite
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  database: db/would_you_rather_test.sqlite
+  pool: 5
+  timeout: 5000
