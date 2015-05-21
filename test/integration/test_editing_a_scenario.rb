@@ -93,7 +93,7 @@ class EditingAScenarioTest < Minitest::Test
       pipe.puts "1" # Edit
       expected_output << "Enter a new name:\n"
       pipe.puts ""
-      expected_output << "\"\" is not a valid scenario name.\n"
+      expected_output << "Name can't be blank.\n"
       expected_output << "Enter a new name:\n"
       pipe.puts "Eat a pop tart"
       expected_output << "Scenario has been updated to: \"Eat a pop tart\"\n"

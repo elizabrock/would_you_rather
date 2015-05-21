@@ -37,7 +37,7 @@ class ScenariosController
     if scenario.save
       "\"#{name}\" has been added\n"
     else
-      scenario.errors
+      scenario.errors.full_messages.join
     end
   end
 
@@ -49,7 +49,7 @@ class ScenariosController
         say("Scenario has been updated to: \"#{scenario.name}\"")
         return
       else
-        say(scenario.errors)
+        say(scenario.errors.full_messages.join)
       end
     end
   end
