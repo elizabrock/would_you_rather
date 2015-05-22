@@ -12,14 +12,13 @@ end
 
 desc 'bootstrap database structure'
 task :bootstrap_database do
-  require_relative 'lib/database'
+  require_relative 'lib/environment'
   Database.load_structure
 end
 
 task :import do
   require 'csv'
-  require_relative 'lib/database'
-  require_relative 'app/models/scenario'
+  require_relative 'lib/environment'
   Database.load_structure
   CSV.open('fixture.csv', 'r+').each do |row|
     cleaned_row = row[0].lstrip
