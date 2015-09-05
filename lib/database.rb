@@ -1,7 +1,6 @@
 require 'sqlite3'
 
 class Database
-
   def self.load_structure
     Database.execute <<-SQL
     CREATE TABLE IF NOT EXISTS scenarios (

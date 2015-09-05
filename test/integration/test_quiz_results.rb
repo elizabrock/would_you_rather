@@ -2,15 +2,13 @@ require_relative '../test_helper'
 
 class TestQuizResults < Minitest::Test
   def test_happy_path
-    shell_output = ""
-    expected_output = ""
-    pop_tart = Scenario.new("Eat a pop tart")
+    pop_tart = Scenario.new('Eat a pop tart')
     pop_tart.save
-    toaster_strudel = Scenario.new("Eat a toaster strudel")
+    toaster_strudel = Scenario.new('Eat a toaster strudel')
     toaster_strudel.save
-    pepsi = Scenario.new("Drink Pepsi")
+    pepsi = Scenario.new('Drink Pepsi')
     pepsi.save
-    diet_pepsi = Scenario.new("Drink Diet Pepsi")
+    diet_pepsi = Scenario.new('Drink Diet Pepsi')
     diet_pepsi.save
 
     Choice.new(rejected_scenario_id: toaster_strudel.id,

@@ -1,15 +1,15 @@
-require "highline/import"
+require 'highline/import'
 
 class ScenariosController
   def index
     if Scenario.count > 0
       scenarios = Scenario.all # All of the scenarios in an array
       choose do |menu|
-        menu.prompt = ""
+        menu.prompt = ''
         scenarios.each do |scenario|
-          menu.choice(scenario.name){ action_menu(scenario) }
+          menu.choice(scenario.name) { action_menu(scenario) }
         end
-        menu.choice("Exit")
+        menu.choice('Exit')
       end
     else
       say("No scenarios found. Add a scenario.\n")
@@ -17,16 +17,17 @@ class ScenariosController
   end
 
   def action_menu(scenario)
-    say("Would you like to?")
+    say('Would you like to?')
     choose do |menu|
-      menu.prompt = ""
-      menu.choice("Edit") do
+      menu.prompt = ''
+      menu.choice('Edit') do
         edit(scenario)
       end
-      menu.choice("Delete") do
-        destroy(scenario)
+      menu.choice('Delete') do
+        # destroy(scenario)
+        puts 'This feature has not yet been implemented.'
       end
-      menu.choice("Exit") do
+      menu.choice('Exit') do
         exit
       end
     end
@@ -43,7 +44,7 @@ class ScenariosController
 
   def edit(scenario)
     loop do
-      user_input = ask("Enter a new name:")
+      user_input = ask('Enter a new name:')
       scenario.name = user_input.strip
       if scenario.save
         say("Scenario has been updated to: \"#{scenario.name}\"")

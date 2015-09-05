@@ -1,11 +1,10 @@
-require_relative "../test_helper"
+require_relative '../test_helper'
 
 describe ScenariosController do
+  describe '.index' do
+    let(:controller) { ScenariosController.new }
 
-  describe ".index" do
-    let(:controller) {ScenariosController.new}
-
-    it "should say no scenarios found when empty" do
+    it 'should say no scenarios found when empty' do
       skip
       # Temporarily skipped out.  To fix, see: https://github.com/JEG2/highline/issues/28
       actual_output = controller.index
@@ -14,26 +13,24 @@ describe ScenariosController do
     end
   end
 
-  describe ".add" do
-    let(:controller) {ScenariosController.new}
+  describe '.add' do
+    let(:controller) { ScenariosController.new }
 
-    it "should add a scenario" do
-      controller.add("run with scissors")
+    it 'should add a scenario' do
+      controller.add('run with scissors')
       assert_equal 1, Scenario.count
     end
 
-    it "should not add scenario all spaces" do
-      scenario_name = "       "
+    it 'should not add scenario all spaces' do
+      scenario_name = '       '
       result = controller.add(scenario_name)
       assert_equal "Name can't be blank.", result
     end
 
-    it "should only add scenarios that make sense" do
-      scenario_name = "77777777"
+    it 'should only add scenarios that make sense' do
+      scenario_name = '77777777'
       controller.add(scenario_name)
       assert_equal 0, Scenario.count
     end
-
   end
-
 end

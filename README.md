@@ -11,7 +11,7 @@ Users will be able to add/edit/delete scenarios, as well as take a quiz to make 
 ## Usage
 
  * Run `rake bootstrap_database` to setup your local database
- * Then, `./would_you_rather manage` to manage the list of scenarios
+ * Then, `./would_you_rather manage` to manage the list of scenarios.
 
 ### Viewing quiz results
 
@@ -36,7 +36,7 @@ I want to see what my priorities, as reflected by my quiz answer
 In order to learn hard truths about my life priorities
 I want to take the quiz
 
-Assuming there the following scenarios:
+Assuming there are the following scenarios:
 
   * Eat a pop tart
   * Eat a toaster strudel
@@ -118,10 +118,10 @@ Usage Example:
 Acceptance Criteria:
 
     * User should be able select proper scenario using a scenario's number.
-    * After selecting a scenario User should be presented with a sub-menu containing possible actions.
-    * Once the user enters a new name, show confirmation of the renaming
-    * On rename, if the user input an invalid, then ask the user to enter a valid name.
-    * After confirmation of scenario renaming, show main menu.
+    * After selecting a scenario, User should be presented with a submenu containing possible actions.
+    * Once the user enters a new name, show confirmation of the renaming.
+    * On rename, if the user input is invalid, then ask the user to enter a valid name.
+    * After confirmation of scenario renaming, show the main menu.
 
 ### Viewing all existing scenarios
 
@@ -173,10 +173,10 @@ Usage Example:
 
 Acceptance Criteria:
 
-  * Program prints out confirmation that the scenario was deleted
-  * The deleted scenario is removed from the database
-  * All references to the deleted scenario are removed from the database
-  * After the deletion, the user is taken back to the main manage menu
+  * Program prints out confirmation that the scenario was deleted.
+  * The deleted scenario is removed from the database.
+  * All references to the deleted scenario are removed from the database.
+  * After the deletion, the user is taken back to the main manage menu.
 
 ### Importing baseline scenarios
 

@@ -1,8 +1,8 @@
-ENV["TEST"] = "true"
+ENV['TEST'] = 'true'
 require 'rubygems'
 require 'bundler/setup'
-require "minitest/reporters"
-require_relative "../lib/environment"
+require 'minitest/reporters'
+require_relative '../lib/environment'
 
 reporter_options = { color: true }
 Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
@@ -11,8 +11,8 @@ require 'minitest/autorun'
 class Minitest::Test
   def setup
     Database.load_structure
-    Database.execute("DELETE FROM scenarios;")
-    Database.execute("DELETE FROM choices;")
+    Database.execute('DELETE FROM scenarios;')
+    Database.execute('DELETE FROM choices;')
   end
 end
 
@@ -21,8 +21,8 @@ def create_scenario(name)
 end
 
 def exit_from(pipe)
-  pipe.puts "Exit"
-  pipe.puts "3"
+  pipe.puts 'Exit'
+  pipe.puts '3'
   main_menu + "Peace Out!\n"
 end
 
