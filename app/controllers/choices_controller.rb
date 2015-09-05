@@ -8,19 +8,19 @@ class ChoicesController
   end
 
   def quiz
-    scenarios = Scenario.all.sort{ |a, b| a.id <=> b.id }
+    scenarios = Scenario.all.sort { |a, b| a.id <=> b.id }
     scenarios.combination(2) do |pair|
-      scenarioA, scenarioB = pair
-      say("Would you rather...")
+      scenario_a, scenario_b = pair
+      say('Would you rather...')
       choose do |menu|
-        menu.prompt = ""
-        menu.choice(scenarioA.name) do
-          Choice.new(selected_scenario_id: scenarioA.id,
-                     rejected_scenario_id: scenarioB.id).save
+        menu.prompt = ''
+        menu.choice(scenario_a.name) do
+          Choice.new(selected_scenario_id: scenario_a.id,
+                     rejected_scenario_id: scenario_b.id).save
         end
-        menu.choice(scenarioB.name) do
-          Choice.new(selected_scenario_id: scenarioB.id,
-                     rejected_scenario_id: scenarioA.id).save
+        menu.choice(scenario_b.name) do
+          Choice.new(selected_scenario_id: scenario_b.id,
+                     rejected_scenario_id: scenario_a.id).save
         end
       end
     end

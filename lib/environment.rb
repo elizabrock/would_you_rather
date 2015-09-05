@@ -1,10 +1,10 @@
 require 'active_record'
-Dir["./lib/*.rb"].each { |f| require f }
-Dir["./app/**/*.rb"].each { |f| require f }
+Dir['./lib/*.rb'].each { |f| require f }
+Dir['./app/**/*.rb'].each { |f| require f }
 
 class Environment
   def self.current
-    ENV["TEST"] ? "test" : "production"
+    ENV['TEST'] ? 'test' : 'production'
   end
 end
 
